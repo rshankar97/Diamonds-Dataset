@@ -1,5 +1,5 @@
 # Diamonds-Dataset
-This is a mini project attempting to predict the price of diamonds using features of diamonds, such as cut clarity and colour. The project uses a deep-model - a fully connected neural network and a non - deep model - a random forest regressor. The project contains an exploratory data analysis (EDA), data cleansing, dimensionality reduction and the model building files.
+This is a project attempting to predict the price of diamonds using features of diamonds, such as cut clarity and colour. This project is a work in progress - improvements/alternative methods will be uploaded in the future. The project uses a deep-model - a fully connected neural network and a non - deep model - a random forest regressor. The project contains an exploratory data analysis (EDA), data cleansing, dimensionality reduction and the model building files.
 
 The dataset was found on kaggle: https://www.kaggle.com/shivam2503/diamonds
 
