@@ -13,13 +13,15 @@ from data_loader import Diamond
 from DeepRegress import RegressNet
 
 num_epochs = 200
-learning_rate = 5e-4
+learning_rate = 1e-3
 batch_size = 4
 eval_interval = 5
 save_interval = 100
+
 trial_name = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
-log_dir="train_pca/fit/" + datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
+log_dir="tensorboard_logs/fit/" + trial_name
 writer = SummaryWriter(log_dir)
+
 train_csv = 'train_pca.csv'
 val_csv = 'val_pca.csv'
 parent_dir = os.path.abspath(os.path.join(os.getcwd(),os.pardir))
@@ -31,7 +33,7 @@ trainload = DataLoader(train, batch_size=batch_size, shuffle=True)
 val = Diamond(csv_file=val_csv,root_dir=root_dir)
 valload = DataLoader(val, batch_size=batch_size//4, shuffle=True)
 
-model = RegressNet(7,100,1)
+model = RegressNet(6,100,1)
 
 loss_fn = nn.MSELoss()
 
@@ -79,7 +81,7 @@ for epoch in range(num_epochs):
     print('epoch: {}, loss: {}'.format(epochs, t_record_loss))  
     
     if epochs%save_interval == 0:
-        Save_Name = trial_name + '{}.pth'.format(epochs)
+        Save_Name = trial_name + '_{}.pth'.format(epochs)
         Save_Rootdir = os.path.join(os.getcwd(), 'training_checkpoints')
         Save_Path = os.path.join(Save_Rootdir, Save_Name)
         torch.save({'model':model.state_dict(),'optimizer':optimizer.state_dict(), 'epoch':epochs}, Save_Path)

@@ -10,8 +10,8 @@ class Diamond(Dataset):
     def __init__(self,csv_file, root_dir):
         self.csv_file = os.path.join(root_dir, csv_file)
         self.input = pd.read_csv(self.csv_file)
-        self.index_x = [str(ind) for ind in self.input.keys() if str(ind)!='0']
-        self.y_input = self.input[str(0)]
+        self.index_x = [str(ind) for ind in self.input.keys() if str(ind)!='price']
+        self.y_input = self.input['price']
         self.x_input = self.input[self.index_x]
     def __len__(self):
         return len(self.input)
